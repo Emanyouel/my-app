@@ -5,7 +5,7 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [date, setDate] = useState(appointment.date);
   const [time, setTime] = useState(appointment.time);
-  const [loading, setLoading] = useState(false);
+  conts[(loading, setLoading)] = useState(false);
 
   const handleDelete = async () => {
     try {
