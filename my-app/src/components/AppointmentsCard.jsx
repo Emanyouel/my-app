@@ -5,14 +5,14 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [date, setDate] = useState(appointment.date);
   const [time, setTime] = useState(appointment.time);
-  conts[(loading, setLoading)] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
     try {
       setLoading(true);
       await API.delete(`/bookings/${appointment.id}`);
       refreshAppointments();
-    } catch (error) {
+    } catch {
       alert("Failed to delete booking");
     } finally {
       setLoading(false);
