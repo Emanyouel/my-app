@@ -8,21 +8,20 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
   const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       await API.delete(`/bookings/${appointment.id}`);
       refreshAppointments();
     } catch {
-      alert("Failed to delete booking");
+      alert("Failed to delete — try again");
     } finally {
       setLoading(false);
     }
   };
 
   const handleUpdate = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-
       await API.put(`/bookings/${appointment.id}`, {
         date,
         time,
@@ -31,14 +30,14 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
 
       setIsEditing(false);
       refreshAppointments();
-    } catch (error) {
-      alert(error.response?.data?.message || "Failed to update booking");
+    } catch (err) {
+      alert(err.response?.data?.message || "Update failed, please try again");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleCancelEdit = () => {
+  const cancelEdit = () => {
     setDate(appointment.date);
     setTime(appointment.time);
     setIsEditing(false);
@@ -70,8 +69,8 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
       ) : (
         <>
           <p className="font-semibold">Service: {appointment.serviceName}</p>
-          <p>Date: {appointment.date}</p>
-          <p>Time: {appointment.time}</p>
+          <p className="text-sm text-gray-700">Date: {appointment.date}</p>
+          <p className="text-sm text-gray-700">Time: {appointment.time}</p>
         </>
       )}
 
@@ -87,7 +86,7 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
             </button>
 
             <button
-              onClick={handleCancelEdit}
+              onClick={cancelEdit}
               className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500 transition"
             >
               Cancel
@@ -98,7 +97,7 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
             onClick={() => setIsEditing(true)}
             className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 transition"
           >
-            Update
+            Edit
           </button>
         )}
 

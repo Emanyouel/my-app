@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router  = express.Router()
 
 const {
   getSalonData,
@@ -8,14 +8,13 @@ const {
   getUserBookings,
   updateBooking,
   deleteBooking
-} = require("../controllers/bookingController");
+} = require('../controllers/bookingController')
 
-router.get("/salon", getSalonData);
-router.get("/available", getAvailableSlots);
-router.post("/", createBooking);
-router.get("/", getUserBookings);
-router.put("/:id", updateBooking);
-router.delete("/:id", deleteBooking);
+router.get('/salon',    getSalonData)
+router.get('/available', getAvailableSlots)
+router.post('/',         createBooking)
+router.get('/',          getUserBookings)
+router.put('/:id',       updateBooking)
+router.delete('/:id',    deleteBooking)
 
-module.exports = router;
-
+module.exports = router

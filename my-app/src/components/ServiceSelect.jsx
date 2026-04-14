@@ -1,3 +1,5 @@
+// service dropdown
+
 const ServiceSelect = ({ services, form, setForm }) => {
   return (
     <select
@@ -7,9 +9,10 @@ const ServiceSelect = ({ services, form, setForm }) => {
       required
     >
       <option value="">Select Service</option>
-      {services.map((service) => (
-        <option key={service.id} value={service.id}>
-          {service.name}
+
+      {services.map((svc) => (
+        <option key={svc.id} value={svc.id}>
+          {svc.name}
         </option>
       ))}
     </select>
