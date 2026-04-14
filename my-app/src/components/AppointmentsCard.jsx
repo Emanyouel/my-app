@@ -96,7 +96,7 @@ const AppointmentCard = ({ appointment, refreshAppointments }) => {
         ) : (
           <button
             onClick={() => setIsEditing(true)}
-            className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+            className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 transition"
           >
             Update
           </button>
